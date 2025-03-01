@@ -7,7 +7,7 @@ const Food: React.FC = () => {
   
   return (
     <div
-      className="absolute snake-food bg-snake-food shadow-md"
+      className="absolute snake-food"
       style={{
         width: cellSize - 4,
         height: cellSize - 4,

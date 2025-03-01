@@ -33,7 +33,7 @@ const Snake: React.FC = () => {
           <div
             key={`${segment.x}-${segment.y}`}
             className={`absolute snake-segment ${
-              isHead ? "snake-head bg-snake-head z-10" : "bg-snake-body"
+              isHead ? "snake-head" : "snake-body"
             } transition-all duration-100`}
             style={{
               width: cellSize - 2,

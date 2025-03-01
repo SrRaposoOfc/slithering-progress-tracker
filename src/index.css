@@ -37,6 +37,11 @@
     --ring: 222 84% 5%;
 
     --radius: 0.5rem;
+    
+    /* Define colors for snake game */
+    --snake-head: 142 69% 58%;
+    --snake-body: 161 94% 30%;
+    --snake-food: 0 84% 60%;
   }
 
   * {
@@ -74,11 +79,77 @@
 
 .snake-head {
   border-radius: 4px;
+  background-color: hsl(var(--snake-head));
+}
+
+.snake-body {
+  background-color: hsl(var(--snake-body));
 }
 
 .snake-food {
   border-radius: 50%;
+  background-color: hsl(var(--snake-food));
   animation: pulse-soft 2s infinite;
+}
+
+@keyframes pulse-soft {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Adding custom animations */
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes snake-move {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateX(10px) rotate(10deg);
+  }
+  75% {
+    transform: translateX(-10px) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+.animate-snake-move {
+  animation: snake-move 3s ease-in-out infinite;
 }
 
 /* Animated Page Transitions */
@@ -102,4 +173,13 @@
   opacity: 0;
   transform: scale(0.98);
   transition: opacity 300ms, transform 300ms;
+}
+
+/* Shadow utilities */
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-glass {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
