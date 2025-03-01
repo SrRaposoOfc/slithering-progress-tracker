@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import { useAuth } from "./AuthContext";
 
@@ -36,6 +35,7 @@ export const useGame = () => {
 };
 
 // Constants
+const CELL_SIZE = 20; // px
 const INITIAL_SNAKE = [
   { x: 8, y: 10 },
   { x: 7, y: 10 },
@@ -43,13 +43,16 @@ const INITIAL_SNAKE = [
 ];
 const INITIAL_DIRECTION = "RIGHT";
 const INITIAL_SPEED = 150; // ms
-const GRID_SIZE = { rows: it(), cols: 20 };
-const CELL_SIZE = 20; // px
 
-function it(): number {
+// Helper function to calculate grid dimensions
+function calculateGridSize(): { rows: number; cols: number } {
   // The grid is slightly taller than it is wide for aesthetic reasons
-  return Math.floor(window.innerHeight * 0.75 / CELL_SIZE);
+  const rows = Math.floor(window.innerHeight * 0.75 / CELL_SIZE);
+  const cols = 20;
+  return { rows, cols };
 }
+
+const GRID_SIZE = calculateGridSize();
 
 // Helper to generate random food position
 const getRandomPosition = (snake: Position[], gridSize: { rows: number; cols: number }): Position => {
